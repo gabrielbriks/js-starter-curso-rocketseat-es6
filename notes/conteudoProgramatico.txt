@@ -1,0 +1,23 @@
+
+	---- ES6+ ----
+
+O que ?
+
+Quais a versoes?
+	
+Babel?
+	Ajuda os navegadores entender todas as novas funcionalidades do ES6+.
+
+
+#Algumas das funcionalidades que serão abordadas:
+	-Webpack: servidor que possibilita atualizar com novos codigos, sem precisar dar F5, é um servidor de desenvolvimkento quando utilizamos o ES6;
+	-Classes
+	-Arrow functions:Novas formas/modelo de escrever functions
+
+	-Desestruturação: recuperar as prorpiedades de dentro de um objeto ou de dentro de um array de uma forma bem mais facil; 
+
+	-Rest/spread: Formas de manipular as propriedades e informações dentro de objeto e array;
+
+	-Import/Export: Forma de importar e exportar funcionalidades de um arquivo para outro;
+
+	-Async/await: nova forma de trabalhar com programação assicronas dentro do js.

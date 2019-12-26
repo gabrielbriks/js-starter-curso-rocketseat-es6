@@ -1,0 +1,7 @@
+Preparação do ambiente:
+ Instalar o seguintes pkcts:
+	-yarn add @babel/cli
+	-yarn add @babel/preset-env
+
+Definir o arquivo de conffig do babel
+-Name: .babelrc
