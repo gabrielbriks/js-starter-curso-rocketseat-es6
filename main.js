@@ -1,11 +1,34 @@
-class Matematica{
-  /*
-   * essa propriedade static só funciona quando criamos uma classe para executar ou realiza alguma coisa
-   * nesse caso ela sempre recebe e retorno alguma coisa para a gente.
-  */
-  static soma( a, b){
-    return a + b;
-  }
-}
+//constantes e variaveis de escopos
 
-console.log(Matematica.soma(7,5));
+/*const
+  Nao pode ter o seu valor reatribuido;
+  const a = 3 ;
+
+  ERROR
+  a = 5;
+
+  UNICA FORMA DE ALTERA-LÁ E MUTANDO ELA CONFORME A BORDAGEM ABAIXO;
+*/
+
+
+const usuario = {nome: 'Gabriel'};
+
+usuario.nome = 'Cleiton';
+
+console.log(usuario.nome);
+
+
+//VARIAVEIS DE ESCOPO
+function teste(x){
+  //declarando minha variavel de escopo
+  let y = 2;
+
+  if(x > 5){
+    //atribuindo um novo valor para a minha variavel 
+    let y = 4;
+
+    console.log(x, y);
+  }
+  
+}
+teste(10);

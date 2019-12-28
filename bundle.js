@@ -1,31 +1,31 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+//constantes e variaveis de escopos
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+/*const
+  Nao pode ter o seu valor reatribuido;
+  const a = 3 ;
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  ERROR
+  a = 5;
 
-var Matematica =
-/*#__PURE__*/
-function () {
-  function Matematica() {
-    _classCallCheck(this, Matematica);
+  UNICA FORMA DE ALTERA-LÁ E MUTANDO ELA CONFORME A BORDAGEM ABAIXO;
+*/
+var usuario = {
+  nome: 'Gabriel'
+};
+usuario.nome = 'Cleiton';
+console.log(usuario.nome); //VARIAVEIS DE ESCOPO
+
+function teste(x) {
+  //declarando minha variavel de escopo
+  var y = 2;
+
+  if (x > 5) {
+    //atribuindo um novo valor para a minha variavel 
+    var _y = 4;
+    console.log(x, _y);
   }
+}
 
-  _createClass(Matematica, null, [{
-    key: "soma",
-
-    /*
-     * essa propriedade static só funciona quando criamos uma classe para executar ou realiza alguma coisa
-     * nesse caso ela sempre recebe e retorno alguma coisa para a gente.
-    */
-    value: function soma(a, b) {
-      return a + b;
-    }
-  }]);
-
-  return Matematica;
-}();
-
-console.log(Matematica.soma(7, 5));
+teste(10);
