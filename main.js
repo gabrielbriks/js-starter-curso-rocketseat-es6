@@ -1,15 +1,19 @@
-//TEMPLATE LITERALS
+//OBJETCT SHORT SYNTAX
 
-/** 
- * geralmente para imprimir-mos texo com variaveis utilizamos a
- * concatenação, mas com o ES6 temos uma outra forma muito mais
- * clean para isso..
- * 
- * POR EXEMPLO ... 
-*/
+// SINTAXE CURTA DE OBJETO
+
 const nome = 'Gabriel';
 const idade = 22;
-console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos');
 
-//Agora utilizando o Template Literals
-console.log(`Meu nome é ${nome} e tenho ${idade} anos`);
+// conhecido como Sintaxe Curta de Objeto dentro do ES6
+const usuario = {
+  // isso >>
+  nome,
+  // em vez disso
+  // nome: nome,
+  idade,
+  empresa: 'Polariuns',
+};
+
+console.log(usuario);
+
