@@ -44,6 +44,24 @@ function somaRest(...params){
 // console.log( somaRest(1, 2, 3) );
 
 
+//SPREAD
+/**
+ * ele executa algo totalmente distinto do REST, ele faz uma propagacao
+ * de dados para uma outra estrutura
+ */
+//Como podemos unir esses dois arrays?
+//utilizando o spread e possivel fazer isso de uma forma bem simples
+ const arr1 = [1,2,3];
+ const arr2 = [4,5,6];
+
+ const arr3 = [...arr1, ...arr2];
+//  console.log(arr3);
+
+
+//utilizando o objeto usuario declarado la em cima
+
+const usuario2 = { ...usuario, nome:'Juquinha' };
+console.log(usuario2);
 
 
 
