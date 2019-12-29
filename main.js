@@ -1,33 +1,32 @@
+//DESESTRUTURAÇÃO DE OBJETOS
 
-// VALORES PADRÕES  
-
+const usuario = {
+  nome: 'Gabriel',
+  idade: 22,
+  endereco: {
+    cidade: 'Brasilia',
+    estado: 'DF',
+  },
+};
 /**
- * Se por acaso tentarmos chamar essa functio apenas com um parametro,
- * ou sem nenhum ????
-*/
-function soma(a,b){
-  return a + b;
+ como poderiamos buscar certas informações desse usuario;
+ a primeira ideia que se vem na cabeça é :
+   
+  const nome = usuario.nome;
+  const idade = usuario.idade;
+  const cidade = usuario.endereço.cidade;
+ */
+
+// utilizando a destruturação de objeto
+const { nome, idade, endereco:{ cidade } } = usuario;
+// console.log(nome);
+// console.log(idade);
+// console.log(cidade);
+
+//podemos usar essa abordagem em diversos locais ..
+
+function mostraNome({nome,idade, endereco:{ cidade } }){
+  console.log(nome, idade,cidade);
 }
-console.log(soma(1));
-console.log(soma());
-/**
- * resultado: NaN
- * esse resultado significa que é um resultado descnhecido,
- * por exemplo que ele nao conseguiu realizar a soma, entao
- * por consequencia ele retorna essa expressao 'NaN'
-*/
-
-//Para isso não acontecer denifimos os valores padroes;
-function somaSemError(a = 2, b = 3){
-  return a + b;
-}
-console.log(somaSemError(1));
-console.log(somaSemError());
-
-
-//UTILIZANDO A ARROW FUNCTIONS
- const somaArrowFunc = (a = 0, b = 1) => {
-   return a + b;
- }
- console.log(somaArrowFunc(1));
- console.log(somaArrowFunc());
+mostraNome(usuario);
+ 
