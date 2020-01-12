@@ -1,3 +1,6 @@
+//importando api
+import api from './api';
+
 /**
  * Essa classe servirá para controlar toda a nossa aplicação,
  * por nao ser uma aplicação grande so precisaremos de uma nesse primeiro momento
@@ -12,13 +15,25 @@ class App{
     //estamos buscando o elemento form do html
     this.formEl = document.getElementById('repo-form');
     this.listEl = document.getElementById('repo-list');
-    
+    this.inputEl = document.querySelector('input[name=repository]');
 
     this.registerHandlers();
   }
   //vai registrar os eventos
   registerHandlers(){
     this.formEl.onsubmit = event => this.addRepository(event);
+  }
+
+  setLoading(loading = true){
+    if(loading == true){
+      let loadingEl = document.createElement('span');
+      loadingEl.appendChild(document.createTextNode('Carregando . . . '));
+      loadingEl.setAttribute('id', 'loading');
+
+      this.formEl.appendChild(loadingEl);   
+    }else{
+      document.getElementById('loading').remove();
+    }
   }
   
  /** Exemplo sem arrow functions
@@ -29,20 +44,39 @@ class App{
   }
  */
 
-  addRepository(event){
+  async addRepository(event){
     // previne o comportamento normal do html, aqueles de recarregamento de page e etc
     event.preventDefault();
-    this.repositories.push({
-      name:'rocketseat.com.br',
-      description:'Tire a seua ideai do papel e dê vida a sua startup',
-      avatar_url:'https://avatars0.githubusercontent.com/u/28929274?v=4',
-      html_url:'https://github.com/rocketseat/rocketseat.com.br',
 
+    const repoInput = this.inputEl.value;
+    console.log(repoInput);
+    if(repoInput.length == 0)
+      return alert('Todos os campos devem ser preenchido!');
 
-    });
-    this.render();
-    // console.log(this.repositories);
+    this.setLoading();
+    try{
+      const response = await api.get(`/repos/${repoInput}`);
+      // console.log(response);
+
+      //utilizando desestruturação
+      const { name, description, html_url, owner:{ avatar_url } } = response.data;
+      
+      this.repositories.push({
+        name,
+        description,
+        avatar_url,
+        html_url,
+      });
+
+      this.inputEl.value = '';
+      this.render();
+      
+    }catch(err){
+      alert('O repositório não existe! ')
+    }
+    this.setLoading(false);
   }
+  
   //criando a função render que ira renderizar nossa lista de repositories 
   render(){
     //Isso aqui apaga os os conteudos da list 
@@ -68,6 +102,7 @@ class App{
 
       let linkEl = document.createElement('a');
       linkEl.setAttribute('target', '_blank');
+      linkEl.setAttribute('href', repo.html_url);
       linkEl.appendChild(document.createTextNode('Acessar'));
       
       let listItemEl = document.createElement('li');
